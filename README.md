@@ -13,7 +13,7 @@ Do rozwiązania poniższych zadań wykorzystamy język Java, pakiet org.apache.x
 <!-- https://mvnrepository.com/artifact/org.apache.xmlrpc/xmlrpc -->
 <dependency>
     <groupId>org.apache.xmlrpc</groupId>
-    <artifactId>xmlrpc</artifactId>
+    <artifactId>xmlrpc-server</artifactId>
     <version>3.1.3</version>
     <type>pom</type>
 </dependency>
@@ -47,6 +47,48 @@ public static void main (String [] args){
         }//catch()
     }//main()
 ```
-4. Zaimplementuj teraz w tej samej klasie metodę sayHello, która nie przyjmuje żadnych parametrów i zwraca *String*. Możesz w niej zwrócić dowolny napis witający użytkownika.
+4. Zaimplementuj teraz w tej samej klasie metodę *sayHello*, która nie przyjmuje żadnych parametrów i zwraca *String*. Możesz w niej zwrócić dowolny napis witający użytkownika.
 5. Uruchom program. Na konsoli powinien zostanać wyświetlony napis 
 > Serwer pracuje...
+6. Uruchom proszę program *Postman* i zaimportuj do niego następującą kolekcję zapytań: link
+Będą one nam potrzebne do przetestowania serwera.
+7. Zapoznaj się z żądaniem *sayHelloNoParams*, wyślij je do serwera i wynikliwie przestudiuj odpowiedź serwera.
+8. Wróć do kodu serwera. Zmodyfikuj metodę *sayHello* tak aby przyjmowała *String* jako parametr i zwracała go w odpowiedzi.
+9. Uruchom ponownie serwer i przetestuj go żądaniem *sayhelloWithParam* z programu Postman. Zapoznaj się z ciałem żądania HTTP przed jego wysłaniem i wprowadź w nim swój dowolny ciąg znaków.
+10. Serwer już działa. Zaimplementujemy teraz klienta naszej rozbudowanej usługi. Wróć do IDE i utwórz proszę nowy projekt. Ponownie wykorzystaj do tego Maven. Do sekcji *dependiences* dodaj poniższy kod.
+```xml
+<!-- https://mvnrepository.com/artifact/org.apache.xmlrpc/xmlrpc-client -->
+<dependency>
+    <groupId>org.apache.xmlrpc</groupId>
+    <artifactId>xmlrpc-client</artifactId>
+    <version>3.1.3</version>
+</dependency>
+```
+11. Dodaj nową klasę i wklej do niej podany niżej kod.
+```Java
+public static void main (String [] args) {
+        try {
+            // Utworzenie i konfiguracja klienta
+            XmlRpcClient client = new XmlRpcClient();
+            XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+            // dodanie adresu URL serwera
+            config.setServerURL(new URL("http://localhost/RPC2"));
+            client.setConfig(config);
+            
+            // Inicjalizacja parametrów
+            Vector params = new Vector();
+            params.add(new String("Dawid nie jest wcale takim dobrym programistą jak sam uważa."));
+
+            // Zdalne wykonanie metody na serwerze i zapisanie odpowiedzi
+            Object result = client.execute("hello.sayHello", params);
+
+            // Wyświetlenie odpowiedzi serwera na ekranie
+            String res = (String) result;
+            System.out.println(res);
+
+        } catch (Exception exception) {
+            System.err.println("Coś poszło nie tak: " + exception);
+        }//catch
+    }//main()
+```
+12. Po zapoznaniu się z powyższym kodem i zaimportowaniu odpowiednich bibliotek przejdź do uruchomienia programu. Jeśli wszystko zrobiłeś prawidłowo na konsoli powinieneś otrzymać tekst, który wysyłasz do serwera.
