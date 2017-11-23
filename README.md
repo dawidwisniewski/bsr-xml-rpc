@@ -78,6 +78,7 @@ public static void main (String [] args) {
             // Inicjalizacja parametrów
             Vector params = new Vector();
             params.add(new String("Dawid nie jest wcale takim dobrym programistą jak sam uważa."));
+            // kolejne parametry przesyła się dodając je w powyższy sposób
 
             // Zdalne wykonanie metody na serwerze i zapisanie odpowiedzi
             Object result = client.execute("hello.sayHello", params);
@@ -92,3 +93,7 @@ public static void main (String [] args) {
     }//main()
 ```
 12. Po zapoznaniu się z powyższym kodem i zaimportowaniu odpowiednich bibliotek przejdź do uruchomienia programu. Jeśli wszystko zrobiłeś prawidłowo na konsoli powinieneś otrzymać tekst, który wysyłasz do serwera.
+13. Zaimplementujemy teraz przesyłanie tablicy. Będzie to tablica obiektów, którą wyślemy od klienta do serwera. Serwer w odpowiedzi odeśle napis złożony z elementów tej tablicy. Zacznij proszę od implementacji obsługi tego żądania po serwera. Dodaj metodę iterującą po otrzymanej tablicy, sklejającą elementy tablicy i zwracającą sklejony ciąg znaków. W ramach tego ćwiczenia ogranicz się do obsługi elementów typu *int*, *double* i *string*.
+Podpowiedź 1: Twoja metoda powinna przyjmować tablicę obiektów (*Object[] elements*). 
+Podpowiedź 2: Będziesz musiał sprawdzić jaki jest typ obiektu, żeby zrzutować go na *String*. Pomocny może okazać się tutaj operator *instanceof*.
+14. W celu przetestowania swojej implementacji wykorzystaj zapytanie concatArray z wcześniej zaimportowanej kolekcji w programie *Postman*.
