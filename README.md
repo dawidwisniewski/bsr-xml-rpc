@@ -1,6 +1,7 @@
 # Ćwiczenia z XML-RPC
 Plik z zadaniami z zajęć z XML-RPC
 
+Poniżej znajdują się zadania do wykonania na zajęciach. Oprócz nich na tym repozytorium jest także prezentacja oraz zadania w wersji pdf.
 
 # Wstęp
 
@@ -48,9 +49,9 @@ public static void main (String [] args){
     }//main()
 ```
 4. Zaimplementuj teraz w tej samej klasie metodę *sayHello*, która nie przyjmuje żadnych parametrów i zwraca *String*. Możesz w niej zwrócić dowolny napis witający użytkownika.
-5. Uruchom program. Na konsoli powinien zostanać wyświetlony napis 
+5. Uruchom program. Na konsoli powinien zostać wyświetlony napis 
 > Serwer pracuje...
-6. Uruchom proszę program *Postman* i zaimportuj do niego następującą kolekcję zapytań: link
+6. Uruchom proszę program *Postman* i zaimportuj do niego następującą kolekcję zapytań: [klik](https://raw.githubusercontent.com/dawidwisniewski/bsr-xml-rpc/master/xmlRpc.postman_collection.json).
 Będą one nam potrzebne do przetestowania serwera.
 7. Zapoznaj się z żądaniem *sayHelloNoParams*, wyślij je do serwera i wynikliwie przestudiuj odpowiedź serwera.
 8. Wróć do kodu serwera. Zmodyfikuj metodę *sayHello* tak aby przyjmowała *String* jako parametr i zwracała go w odpowiedzi.
@@ -122,6 +123,8 @@ public Object modifyObject(Map<String, Object> o) {
 ```
 18. Na podstawie powyższego kodu modyfikuj klienta tak, aby wysyłał do serwera obiekt typu Grade i wyświetlał na ekranie wartość pól otrzymanej w odpowiedzi struktury.
 
+
 Dla chętnych:
+
 19. Sprawdź co się stanie jeśli rzucimy w jakieś metodzie wyjątek. Przetestuj zdalne wywołanie tej metody z wykorzystaniem Postmana i aplikacji klienta.
 20. Rozbuduj klasę Grade tak, aby przechowywała tablicę kilku ocen. Obsłuż taką strukturę w kodzie serwera i klienta.
