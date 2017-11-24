@@ -97,3 +97,31 @@ public static void main (String [] args) {
 Podpowiedź 1: Twoja metoda powinna przyjmować tablicę obiektów (*Object[] elements*). 
 Podpowiedź 2: Będziesz musiał sprawdzić jaki jest typ obiektu, żeby zrzutować go na *String*. Pomocny może okazać się tutaj operator *instanceof*.
 14. W celu przetestowania swojej implementacji wykorzystaj zapytanie concatArray z wcześniej zaimportowanej kolekcji w programie *Postman*.
+15. Zmodyfikuj klienta tak, aby uruchamiał zdalnie zaimplementowaną procedurę serwera. Wysyłaj jako parametr tablicę obiektów. Następnie przetestuj działanie aplikacji klienckiej.
+Podpowiedź 1: W punkcie jedenastym klient wysyła tak naprawdę tablicę parametrów. Jeśli teraz wyślemy do serwera tablicę to jej poszczególne elementy zostaną zinterpretowane jako kolejne parametry co poskutkuje tym, że serwer zwróci błąd.
+16. Dodaj do serwera klasę wewnętrzną Grade używając poniższego kodu.
+```Java
+class Grade {
+   String name;
+   Double value;
+}
+```
+17. Dopiszemy teraz do serwera metodę przyjmującą obiekt klasy Grade, modyfikującą i zwracającą go. Kod metody znajduje się niżej. Skopiuj go i przetestuj swoją implementację za pomocą *Postmana*. Wykorzystaj zapytanie *modifyObject*
+```Java
+public Object modifyObject(Map<String, Object> o) {
+        Grade g = new Grade();
+        g.name = (String) o.get("name");
+        g.value = (Double) o.get("value");
+        g.value -= 1;
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name", g.name);
+        map.put("value", g.value);
+        return map;
+    }
+```
+18. Na podstawie powyższego kodu modyfikuj klienta tak, aby wysyłał do serwera obiekt typu Grade i wyświetlał na ekranie wartość pól otrzymanej w odpowiedzi struktury.
+
+Dla chętnych:
+19. Sprawdź co się stanie jeśli rzucimy w jakieś metodzie wyjątek. Przetestuj zdalne wywołanie tej metody z wykorzystaniem Postmana i aplikacji klienta.
+20. Rozbuduj klasę Grade tak, aby przechowywała tablicę kilku ocen. Obsłuż taką strukturę w kodzie serwera i klienta.
