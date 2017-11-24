@@ -1,0 +1,91 @@
+{
+	"variables": [],
+	"info": {
+		"name": "xmlRpc",
+		"_postman_id": "43960b5e-8847-ead7-5556-966c54db46c3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sayHelloNoParams",
+			"request": {
+				"url": "http://localhost/RPC2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\r\n<methodCall>\r\n   <methodName>hello.sayHello</methodName>\r\n   <params>\r\n   \t<param>\r\n   \t\t<value>\r\n   \t\t\t<string>Dawid jest najlepszym programistą!</string>\r\n   \t\t</value>\r\n   \t</param>\r\n   </params>\r\n</methodCall>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sayHelloWithParams",
+			"request": {
+				"url": "http://localhost/RPC2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\r\n<methodCall>\r\n   <methodName>hello.concatArray</methodName>\r\n   <params>\r\n   \t<param>\r\n   \t\t<value>\r\n\t   \t\t<array>\r\n\t   \t\t\t<data>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<string>Dawid jest najlepszym programistą!</string>\r\n\t\t   \t\t\t</value>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<string> Wcale nie!</string>\r\n\t\t   \t\t\t</value>\r\n\t   \t\t\t</data>\r\n\t   \t\t</array>\r\n   \t\t</value>\r\n   \t</param>\r\n   </params>\r\n</methodCall>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "concatArray",
+			"request": {
+				"url": "http://localhost/RPC2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\r\n<methodCall>\r\n   <methodName>hello.concatArray</methodName>\r\n   <params>\r\n   \t<param>\r\n   \t\t<value>\r\n\t   \t\t<array>\r\n\t   \t\t\t<data>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<string>Chciałbym dostać </string>\r\n\t\t   \t\t\t</value>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<int>10</int>\r\n\t\t   \t\t\t</value>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<string> punktów i minimum </string>\r\n\t\t   \t\t\t</value>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<double>3.0</double>\r\n\t\t   \t\t\t</value>\r\n\t\t   \t\t\t<value>\r\n\t\t   \t\t\t\t<string> na koniec semestru.</string>\r\n\t\t   \t\t\t</value>\r\n\t   \t\t\t</data>\r\n\t   \t\t</array>\r\n   \t\t</value>\r\n   \t</param>\r\n   </params>\r\n</methodCall>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "modifyObject",
+			"request": {
+				"url": "http://localhost/RPC2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\r\n<methodCall>\r\n   <methodName>hello.concatArray</methodName>\r\n   <params>\r\n   \t<param>\r\n   \t\t<value>\r\n\t   \t\t<struct>\r\n\t   \t\t\t<member>\r\n\t   \t\t\t\t<name>name</name>\r\n\t   \t\t\t\t<value>\r\n\t   \t\t\t\t\t<string>Dawid</string>\r\n\t   \t\t\t\t</value>\r\n\t   \t\t\t</member>\r\n\t   \t\t\t<member>\r\n\t   \t\t\t\t<name>value</name>\r\n\t   \t\t\t\t<value>\r\n\t   \t\t\t\t\t<string>Dawid</string>\r\n\t   \t\t\t\t</value>\r\n\t   \t\t\t</member>\r\n\t   \t\t</struct>\r\n   \t\t</value>\r\n   \t</param>\r\n   </params>\r\n</methodCall>"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
