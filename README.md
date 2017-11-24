@@ -20,6 +20,7 @@ Do rozwiązania poniższych zadań wykorzystamy język Java, pakiet org.apache.x
 </dependency>
 ```
 Uwaga! Jeśli Maven nie wygenerował sekcji dependiences utwórz ją wpisując ```<dependiences></dependiences>```
+
 3. Zapoznaj się z poniższym kodem i skopuj metodę *Main* do swojej klasy
 ```Java
 public static void main (String [] args){
